@@ -25,7 +25,9 @@
 				"ms-azuretools.vscode-docker",
 				"ms-kubernetes-tools.vscode-kubernetes-tools",
 				"davidanson.vscode-markdownlint",
-				"gruntfuggly.todo-tree"
+				"gruntfuggly.todo-tree",
+				"humao.rest-client",
+				"timonwong.shellcheck"
 			]
 		}
 	},
@@ -38,11 +40,17 @@
 		8000,
 		8080
 	],
+	// add labels
+	"portsAttributes": {
+		"8080": {
+			"label": "web"
+		}
+	},
 	"waitFor": "postCreateCommand",
 	// Use 'onCreateCommand' to run commands as part of container creation.
 	"onCreateCommand": "/bin/bash -c .devcontainer/on-create.sh",
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "/bin/bash -c .devcontainer/post-create.sh",
 	// Use 'postStartCommand' to run commands after the container starts.
-	"postStartCommand": "/bin/bash -c .devcontainer/set-branch-env.sh && /bin/bash -c .devcontainer/post-start.sh"
+	"postStartCommand": "/bin/bash -c .devcontainer/post-start.sh"
 }
