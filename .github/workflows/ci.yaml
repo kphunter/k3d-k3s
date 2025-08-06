@@ -1,7 +1,10 @@
 name: Single cluster on default network with imported registry
 
 on:
-  [workflow_dispatch, push]
+  push:
+    branches:
+      - "*"
+
 jobs:
   k3d-single-cluster-demo:
     name: Single cluster on default network with imported registry
