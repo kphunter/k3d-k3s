@@ -1,18 +1,27 @@
 {
 	"name": "Kubernetes-in-Codespaces",
 	"dockerFile": "Dockerfile",
+
 	// do not change these if you want Docker in Docker support
 	"runArgs": [
 		"--init",
-		"--privileged"
+		"--privileged",
+		"--userns=keep-id:uid=1000,gid=1000"
 	],
 	"mounts": [
 		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
 	],
 	"overrideCommand": false,
+
 	// some base images require a specific user name
 	"remoteUser": "vscode",
 	"containerUser": "vscode",
+
+	"updateRemoteUserUID": true,
+	"containerEnv": {
+	"HOME": "/home/vscode"
+	},
+
 	// Set container specific settings
 	"customizations": {
 		"vscode": {
@@ -32,10 +41,12 @@
 			]
 		}
 	},
+
 	// Ensure that the host machine has enough resources to build and test Kubernetes
 	"hostRequirements": {
 		"cpus": 4
 	},
+
 	// forward ports for the app
 	"forwardPorts": [
 		8000,
