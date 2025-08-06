@@ -12,6 +12,7 @@
 	"overrideCommand": false,
 	// some base images require a specific user name
 	"remoteUser": "vscode",
+	"containerUser": "vscode",
 	// Set container specific settings
 	"customizations": {
 		"vscode": {
